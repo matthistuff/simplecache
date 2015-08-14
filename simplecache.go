@@ -27,3 +27,7 @@ func (c Cache) Get(key string) interface{} {
 func (c Cache) Assert() CacheMap {
 	return c.Data.(CacheMap)
 }
+
+func (c *Cache) Clear() {
+	c.Data = make(CacheMap)
+}
