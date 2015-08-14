@@ -20,10 +20,10 @@ func New(fileName string) (*Cache, error) {
 	return &Cache{config}, nil
 }
 
-func (c Cache) FromCache(key string) interface{} {
-	return c.GetData()[key]
+func (c Cache) Get(key string) interface{} {
+	return c.Assert()[key]
 }
 
-func (c Cache) GetData() CacheMap {
+func (c Cache) Assert() CacheMap {
 	return c.Data.(CacheMap)
 }
