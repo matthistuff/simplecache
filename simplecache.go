@@ -18,8 +18,9 @@ func New(fileName string) (*Cache, error) {
 	return &Cache{config}, nil
 }
 
-func (c Cache) Get(key string) interface{} {
-	return c.Assert()[key]
+func (c Cache) Get(key string) (val interface{}, exists bool) {
+	val, exists = c.Assert()[key]
+	return
 }
 
 func (c Cache) Assert() map[string]interface{} {
