@@ -8,10 +8,8 @@ type Cache struct {
 	*simpleconf.Config
 }
 
-type CacheMap map[string]interface{}
-
 func New(fileName string) (*Cache, error) {
-	config, err := simpleconf.New(fileName, make(CacheMap))
+	config, err := simpleconf.New(fileName, make(map[string]interface{}))
 
 	if err != nil {
 		return nil, err
@@ -24,10 +22,10 @@ func (c Cache) Get(key string) interface{} {
 	return c.Assert()[key]
 }
 
-func (c Cache) Assert() CacheMap {
-	return c.Data.(CacheMap)
+func (c Cache) Assert() map[string]interface{} {
+	return c.Data.(map[string]interface{})
 }
 
 func (c *Cache) Clear() {
-	c.Data = make(CacheMap)
+	c.Data = make(map[string]interface{})
 }
